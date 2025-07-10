@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore o universo do hardware: processadores, memórias RAM, placas de vídeo, SSDs, placas-mãe, fontes, coolers. Siga o Hardware Hub no Instagram e confira vídeos e postagens filtráveis sobre montagem, reviews, dicas, tutoriais e notícias!">
+    <meta name="keywords" content="hardware, tecnologia, processadores, memória RAM, placas de vídeo, SSD, placa-mãe, fonte de alimentação, cooler, PC gamer, YouTube, Instagram, tutoriais, reviews, dicas, notícias">
+    <meta name="author" content="Hardware Hub">
+    <title>Explorando o Universo do Hardware</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #fff;
+            background-color: #000;
+            scroll-behavior: smooth;
+        }
+
+        /* Partículas de fundo na Hero */
+        .hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Fundo animado para seções */
+        .about, .instagram, .youtube {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before, .instagram::before, .youtube::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #111, #1c1c1c, #111);
+            background-size: 200% 200%;
+            animation: gradientPulse 10s ease infinite;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        @keyframes gradientPulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #1c1c1c;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .logo:hover, .logo:focus {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            outline: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #fff;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after, .nav-links a:focus::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a:focus {
+            color: #ccc;
+            transform: scale(1.1);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            outline: none;
+        }
+
+        /* Efeito Ripple */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-effect 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Efeito Pulsação */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Efeito Rubber Band */
+        @keyframes rubberBand {
+            0% { transform: scale(1); }
+            30% { transform: scaleX(1.25) scaleY(0.75); }
+            40% { transform: scaleX(0.75) scaleY(1.25); }
+            60% { transform: scaleX(1.15) scaleY(0.85); }
+            100% { transform: scale(1); }
+        }
+
+        /* Efeito Pulsante para Filtro Ativo */
+        @keyframes active-pulse {
+            0% { background-color: #fff; }
+            50% { background-color: #e0e0e0; }
+            100% { background-color: #fff; }
+        }
+
+        /* Efeito Glow para Títulos */
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            50% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+        }
+
+        /* Efeito Sombra Pulsante */
+        @keyframes shadowPulse {
+            0% { box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); }
+            50% { box-shadow: 0 8px 16px rgba(255, 255, 255, 0.3); }
+            100% { box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); }
+        }
+
+        /* Transição de Página */
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, #1c1c1c, #000);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            padding: 1rem;
+            animation: fadeIn 1s ease-in;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .hero h1:hover, .hero h1:focus {
+            transform: scale(1.05);
+            animation: glow 1.5s infinite;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: #fff;
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover, .cta-button:focus {
+            background-color: #ccc;
+            animation: rubberBand 0.6s ease;
+            outline: none;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #111;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: slideIn 1s ease-in;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .about h2:hover, .about h2:focus {
+            transform: scale(1.05);
+            animation: glow 1.5s infinite;
+        }
+
+        .about > p {
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .hardware-types {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hardware-card {
+            background-color: #1c1c1c;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            width: 350px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hardware-card:hover, .hardware-card:focus-within {
+            transform: translateY(-10px) rotateY(10deg);
+            animation: shadowPulse 1.5s infinite;
+        }
+
+        .hardware-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .hardware-card h3:hover, .hardware-card h3:focus {
+            transform: scale(1.05);
+            animation: glow 1.5s infinite;
+        }
+
+        .hardware-card p {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .hardware-card ul {
+            list-style: none;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .hardware-card ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .hardware-card ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #fff;
+        }
+
+        /* Instagram Section */
+        .instagram {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #000;
+        }
+
+        .instagram h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: slideIn 1s ease-in;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .instagram h2:hover, .instagram h2:focus {
+            transform: scale(1.05);
+            animation: glow 1.5s infinite;
+        }
+
+        .instagram p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #ccc;
+        }
+
+        .instagram-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .instagram-posts {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .instagram-post {
+            background-color: #1c1c1c;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            width: 300px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .instagram-post:hover, .instagram-post:focus-within {
+            transform: translateY(-10px) rotateY(10deg);
+            animation: shadowPulse 1.5s infinite;
+        }
+
+        .instagram-post p {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .instagram-button {
+            background-color: #fff;
+            color: #000;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        .instagram-button:hover, .instagram-button:focus {
+            background-color: #ccc;
+            animation: rubberBand 0.6s ease;
+            outline: none;
+        }
+
+        /* YouTube Section */
+        .youtube {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #111;
+        }
+
+        .youtube h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: slideIn 1s ease-in;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .youtube h2:hover, .youtube h2:focus {
+            transform: scale(1.05);
+            animation: glow 1.5s infinite;
+        }
+
+        .youtube p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #ccc;
+        }
+
+        .youtube-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            background-color: #1c1c1c;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .filter-button:hover, .filter-button:focus {
+            background-color: #ccc;
+            color: #000;
+            transform: scale(1.1) rotate(2deg);
+            outline: none;
+        }
+
+        .filter-button.active {
+            background-color: #fff;
+            color: #000;
+            animation: active-pulse 1.5s infinite;
+            transform: scale(1.15);
+        }
+
+        .youtube-videos {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .youtube-video {
+            background-color: #1c1c1c;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            width: 300px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .youtube-video:hover, .youtube-video:focus-within {
+            transform: translateY(-10px) rotateY(10deg);
+            animation: shadowPulse 1.5s infinite;
+        }
+
+        .youtube-video h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .youtube-video h3:hover, .youtube-video h3:focus {
+            transform: scale(1.05);
+            animation: glow 1.5s infinite;
+        }
+
+        .youtube-video p {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .youtube-button {
+            background-color: #fff;
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        .youtube-button:hover, .youtube-button:focus {
+            background-color: #ccc;
+            animation: rubberBand 0.6s ease;
+            outline: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1c1c1c;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px) rotateY(-10deg); }
+            to { opacity: 1; transform: translateY(0) rotateY(0); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hardware-types,
+            .instagram-posts,
+            .youtube-videos {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hardware-card,
+            .instagram-post,
+            .youtube-video {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .instagram-filters,
+            .youtube-filters {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu de Navegação -->
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <div class="logo">Hardware Hub</div>
+        <ul class="nav-links">
+            <li><a href="#home" aria-label="Ir para a seção inicial">Home</a></li>
+            <li><a href="#about" aria-label="Ir para a seção sobre hardware">Sobre</a></li>
+            <li><a href="#instagram" aria-label="Ir para a seção do Instagram">Instagram</a></li>
+            <li><a href="#youtube" aria-label="Ir para a seção de vídeos do YouTube">YouTube</a></li>
+        </ul>
+    </nav>
+
+    <!-- Seção Principal (Landing) -->
+    <section id="home" class="hero section-hidden" role="banner">
+        <canvas class="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-content">
+            <h1>Desvende o Universo do Hardware</h1>
+            <p>Conheça os componentes que impulsionam a tecnologia moderna, desde processadores até coolers, e aprenda com nossos vídeos e postagens sobre montagem, reviews, dicas, tutoriais e notícias.</p>
+            <a href="#about" class="cta-button ripple" aria-label="Saiba mais sobre hardware">Explore Agora</a>
+        </div>
+    </section>
+
+    <!-- Seção Sobre Hardware -->
+    <section id="about" class="about section-hidden" role="region" aria-labelledby="about-heading">
+        <h2 id="about-heading">O Que é Hardware?</h2>
+        <p>Hardware é o conjunto de componentes físicos que formam um sistema computacional, desde circuitos internos até dispositivos externos. Eles trabalham em conjunto para processar dados, executar softwares e proporcionar experiências digitais de alto desempenho. Abaixo, detalhamos sete componentes essenciais, suas funções, exemplos práticos, impacto no desempenho e tendências atuais.</p>
+        <div class="hardware-types">
+            <div class="hardware-card" tabindex="0" role="article" aria-label="Informações detalhadas sobre processadores">
+                <h3>Processadores (CPU)</h3>
+                <p>A Unidade Central de Processamento (CPU) é o "cérebro" do computador, executando bilhões de cálculos por segundo para rodar sistemas operacionais e aplicativos.</p>
+                <ul>
+                    <li><strong>Funções principais:</strong> Realiza operações aritméticas, lógicas e de controle.</li>
+                    <li><strong>Exemplos:</strong> Intel Core i9-13900K, AMD Ryzen 9 7950X, Apple M2 Ultra.</li>
+                    <li><strong>Impacto:</strong> Define a velocidade e a capacidade multitarefa do sistema.</li>
+                    <li><strong>Tendências:</strong> Núcleos híbridos e integração com IA para tarefas otimizadas.</li>
+                </ul>
+            </div>
+            <div class="hardware-card" tabindex="0" role="article" aria-label="Informações detalhadas sobre memória RAM">
+                <h3>Memória RAM</h3>
+                <p>A Memória de Acesso Aleatório (RAM) armazena dados temporariamente para acesso rápido pelo processador, garantindo fluidez em multitarefas e aplicativos pesados.</p>
+                <ul>
+                    <li><strong>Funções principais:</strong> Armazena dados ativos de programas e sistemas.</li>
+                    <li><strong>Exemplos:</strong> Corsair Vengeance DDR5 32GB, Kingston Fury DDR4 16GB.</li>
+                    <li><strong>Impacto:</strong> Crucial para jogos, edição de vídeo e servidores.</li>
+                    <li><strong>Tendências:</strong> DDR5 com maior largura de banda e eficiência energética.</li>
+                </ul>
+            </div>
+            <div class="hardware-card" tabindex="0" role="article" aria-label="Informações detalhadas sobre placas de vídeo">
+                <h3>Placas de Vídeo (GPU)</h3>
+                <p>As Unidades de Processamento Gráfico (GPUs) renderizam gráficos 2D/3D e aceleram cálculos paralelos, sendo essenciais para jogos e aplicações gráficas.</p>
+                <ul>
+                    <li><strong>Funções principais:</strong> Processa imagens, vídeos e tarefas de machine learning.</li>
+                    <li><strong>Exemplos:</strong> NVIDIA GeForce RTX 4090, AMD Radeon RX 7900 XTX.</li>
+                    <li><strong>Impacto:</strong> Garante qualidade visual e desempenho em aplicações gráficas.</li>
+                    <li><strong>Tendências:</strong> Ray tracing em tempo real e uso em IA.</li>
+                </ul>
+            </div>
+            <div class="hardware-card" tabindex="0" role="article" aria-label="Informações detalhadas sobre SSDs">
+                <h3>SSDs (Unidades de Estado Sólido)</h3>
+                <p>Os SSDs utilizam memória flash para armazenar dados, oferecendo velocidades muito superiores aos HDs tradicionais, reduzindo tempos de carregamento.</p>
+                <ul>
+                    <li><strong>Funções principais:</strong> Armazena sistemas, aplicativos e arquivos com acesso rápido.</li>
+                    <li><strong>Exemplos:</strong> Samsung 990 Pro 2TB, WD Black SN850X 1TB.</li>
+                    <li><strong>Impacto:</strong> Melhora inicialização e desempenho em jogos e edição.</li>
+                    <li><strong>Tendências:</strong> NVMe PCIe 5.0 com velocidades acima de 10GB/s.</li>
+                </ul>
+            </div>
+            <div class="hardware-card" tabindex="0" role="article" aria-label="Informações detalhadas sobre placas-mãe">
+                <h3>Placas-Mãe</h3>
+                <p>A placa-mãe conecta todos os componentes do sistema, garantindo comunicação e compatibilidade, sendo a base para expansões e upgrades.</p>
+                <ul>
+                    <li><strong>Funções principais:</strong> Integra CPU, RAM, GPU, armazenamento e periféricos.</li>
+                    <li><strong>Exemplos:</strong> ASUS ROG Strix Z790-E, MSI MPG B550 Gaming Plus.</li>
+                    <li><strong>Impacto:</strong> Define estabilidade e opções de personalização.</li>
+                    <li><strong>Tendências:</strong> Suporte a USB 4.0, Wi-Fi 6E e PCIe 5.0.</li>
+                </ul>
+            </div>
+            <div class="hardware-card" tabindex="0" role="article" aria-label="Informações detalhadas sobre fontes de alimentação">
+                <h3>Fontes de Alimentação (PSU)</h3>
+                <p>A fonte de alimentação converte energia elétrica em correntes adequadas para os componentes, garantindo estabilidade e segurança do sistema.</p>
+                <ul>
+                    <li><strong>Funções principais:</strong> Fornece energia estável para todos os componentes.</li>
+                    <li><strong>Exemplos:</strong> Corsair RM850x, Seasonic Focus GX-1000.</li>
+                    <li><strong>Impacto:</strong> Previne falhas e protege contra picos de energia.</li>
+                    <li><strong>Tendências:</strong> Fontes modulares e certificação 80 Plus Titanium para eficiência.</li>
+                </ul>
+            </div>
+            <div class="hardware-card" tabindex="0" role="article" aria-label="Informações detalhadas sobre coolers">
+                <h3>Coolers</h3>
+                <p>Coolers (ventoinhas ou sistemas líquidos) dissipam o calor gerado pelos componentes, mantendo temperaturas seguras para desempenho máximo.</p>
+                <ul>
+                    <li><strong>Funções principais:</strong> Resfria CPU, GPU e outros componentes.</li>
+                    <li><strong>Exemplos:</strong> Noctua NH-D15, NZXT Kraken X63.</li>
+                    <li><strong>Impacto:</strong> Evita thermal throttling e prolonga a vida útil do hardware.</li>
+                    <li><strong>Tendências:</strong> Sistemas de resfriamento líquido AIO e ventoinhas silenciosas.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Instagram -->
+    <section id="instagram" class="instagram section-hidden" role="region" aria-labelledby="instagram-heading">
+        <h2 id="instagram-heading">Siga-nos no Instagram</h2>
+        <p>Confira nossas postagens com dicas, reviews e notícias sobre hardware. Filtre para encontrar o conteúdo que mais te interessa!</p>
+        <div class="instagram-filters" role="tablist" aria-label="Filtros de postagens do Instagram">
+            <button class="filter-button active ripple" data-filter="all" role="tab" aria-selected="true" aria-label="Mostrar todas as postagens">Todos</button>
+            <button class="filter-button ripple" data-filter="dicas" role="tab" aria-selected="false" aria-label="Mostrar postagens de dicas">Dicas</button>
+            <button class="filter-button ripple" data-filter="reviews" role="tab" aria-selected="false" aria-label="Mostrar postagens de reviews">Reviews</button>
+            <button class="filter-button ripple" data-filter="noticias" role="tab" aria-selected="false" aria-label="Mostrar postagens de notícias">Notícias</button>
+        </div>
+        <div class="instagram-posts" aria-label="Postagens recentes do Instagram"></div>
+        <a href="https://www.instagram.com/" target="_blank" class="instagram-button ripple" aria-label="Visitar o perfil do Instagram do Hardware Hub">
+            <i class="fab fa-instagram"></i> Ver no Instagram
+        </a>
+    </section>
+
+    <!-- Seção YouTube -->
+    <section id="youtube" class="youtube section-hidden" role="region" aria-labelledby="youtube-heading">
+        <h2 id="youtube-heading">Vídeos no YouTube</h2>
+        <p>Aprenda a montar seu PC gamer, escolher os melhores componentes, otimizar seu setup e ficar por dentro das últimas notícias com nossos vídeos no YouTube.</p>
+        <div class="youtube-filters" role="tablist" aria-label="Filtros de vídeos">
+            <button class="filter-button active ripple" data-filter="all" role="tab" aria-selected="true" aria-label="Mostrar todos os vídeos">Todos</button>
+            <button class="filter-button ripple" data-filter="montagem" role="tab" aria-selected="false" aria-label="Mostrar vídeos de montagem">Montagem</button>
+            <button class="filter-button ripple" data-filter="reviews" role="tab" aria-selected="false" aria-label="Mostrar vídeos de reviews">Reviews</button>
+            <button class="filter-button ripple" data-filter="dicas" role="tab" aria-selected="false" aria-label="Mostrar vídeos de dicas">Dicas</button>
+            <button class="filter-button ripple" data-filter="tutoriais" role="tab" aria-selected="false" aria-label="Mostrar vídeos de tutoriais">Tutoriais</button>
+            <button class="filter-button ripple" data-filter="noticias" role="tab" aria-selected="false" aria-label="Mostrar vídeos de notícias">Notícias</button>
+        </div>
+        <div class="youtube-videos" aria-label="Vídeos recentes do YouTube"></div>
+        <a href="https://www.youtube.com/" target="_blank" class="youtube-button ripple" aria-label="Visitar o canal do YouTube do Hardware Hub">
+            <i class="fab fa-youtube"></i> Ver no YouTube
+        </a>
+    </section>
+
+    <!-- Rodapé -->
+    <footer role="contentinfo">
+        <p>© 2025 Hardware Hub. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Backend Simulado
+        const backend = {
+            getInstagramPosts: () => [
+                {
+                    caption: 'Novo processador AMD Ryzen 9!',
+                    url: 'https://www.instagram.com/reel/CteRnosg6IS/?igsh=aWk5ZTFqcjFyaXV3',
+                    categories: ['reviews', 'noticias'],
+                    id: 'post1'
+                },
+                {
+                    caption: 'Dicas para montar seu PC gamer.',
+                    url: 'https://www.instagram.com/reel/DH7PJASNQBX/?igsh=MW9yc2JhbXR4cXhyNQ==',
+                    categories: ['dicas'],
+                    id: 'post2'
+                },
+                {
+                    caption: 'SSD NVMe: velocidade máxima!',
+                    url: 'https://www.instagram.com/p/DLU_nBjtkCl/?igsh=MWczM2Z5djM2cWR6bg==',
+                    categories: ['reviews'],
+                    id: 'post3'
+                },  
+                {
+                    caption: 'Lançamento: NVIDIA RTX 5090 em 2025!',
+                    url: 'https://www.instagram.com/reel/DGWE_qvRnsT/?igsh=MWJqdzI2OHBjYWZhaw==',
+                    categories: ['noticias'],
+                    id: 'post5'
+                },
+                       ],
+            getYouTubeVideos: () => [
+                {
+                    title: 'Como Montar um PC Gamer do Zero',
+                    description: 'Aprenda passo a passo como escolher componentes e montar um PC gamer poderoso e otimizado.',
+                   url:'https://youtu.be/UURtjMluM6w?si=LB_0vVVjYUFXZg1h',
+                    categories: ['montagem', 'tutoriais'],
+                    id: 'video1'
+                },
+                {
+                    title: 'Montagem de PC Budget para Iniciantes',
+                    description: 'Guia completo para montar um PC gamer econômico sem sacrificar desempenho.',
+                    url: 'https://youtu.be/Hh93tiXfFsI?si=Uhsn3wHV43Oerkv_',
+                    categories: ['montagem', 'tutoriais'],
+                    id: 'video2'
+                },
+                {
+                    title: 'Montando um PC High-End para Jogos',
+                    description: 'Tutorial detalhado para montar um setup de alto desempenho com componentes premium.',
+                    url: 'https://youtu.be/XnJURj_Tp3I?si=W_RiQGSCUHnBeW1S',
+                    categories: ['montagem', 'tutoriais'],
+                    id: 'video3'
+                },
+                {
+                    title: 'Guia de Montagem para Workstation',
+                    description: 'Monte uma workstation poderosa para edição de vídeo e renderização 3D.',
+                    url: 'https://youtu.be/5IAiVUE7vtA?si=hKA3aVbnEcNf5W0z',
+                    categories: ['montagem', 'tutoriais'],
+                    id: 'video4'
+                },
+                {
+                    title: 'Review: NVIDIA RTX 4090',
+                    description: 'Análise completa da nova placa de vídeo RTX 4090, com testes de desempenho em jogos.',
+                    url: 'https://youtu.be/zPM1g5Jrwfs?si=4k_TzGH55-61CaUR',
+                    categories: ['reviews'],
+                    id: 'video5'
+                },
+                {
+                    title: 'Review: AMD Ryzen 9 7950X',
+                    description: 'Testamos o processador Ryzen 9 7950X em multitarefas e jogos pesados.',
+                    url: 'https://youtu.be/r7MBleslNUY?si=aLIUWejUOo0398Zd',
+                    categories: ['reviews'],
+                    id: 'video6'
+                },
+                {
+                    title: 'Review: Samsung 990 Pro SSD',
+                    description: 'Análise do SSD NVMe Samsung 990 Pro, com velocidades incríveis para jogos e trabalho.',
+                    url: 'https://youtu.be/I-5XmGBTt2c?si=zmFXVLVW5t5fFfOE',
+                    categories: ['reviews'],
+                    id: 'video7'
+                },
+                {
+                    title: 'Review: ASUS ROG Strix Z790-E',
+                    description: 'Testamos a placa-mãe ASUS ROG Strix Z790-E com suporte a DDR5 e PCIe 5.0.',
+                    url: 'https://youtu.be/S4HPFVa-ZA8?si=e--H0gUeJa7uNXwl',
+                    categories: ['reviews'],
+                    id: 'video8'
+                },
+                {
+                    title: '5 Dicas para Otimizar Seu PC',
+                    description: 'Técnicas para melhorar a performance do seu setup com ajustes de hardware e software.',
+                    url: 'https://youtu.be/Ajq4XG9op8g?si=NQOhyskqUzX7bSfy',
+                    categories: ['dicas', 'tutoriais'],
+                    id: 'video9'
+                },
+                {
+                    title: 'Como Escolher a Melhor Fonte de Alimentação',
+                    description: 'Guia para selecionar uma PSU confiável para seu PC gamer ou profissional.',
+                    url: 'https://youtu.be/2joSGvvwgws?si=DRcj5NvnPRrTIr9y',
+                    categories: ['dicas', 'tutoriais'],
+                    id: 'video10'
+                },
+                {
+                    title: 'Overclock Seguro para CPU e GPU',
+                    description: 'Aprenda a fazer overclock com segurança para maximizar o desempenho do seu PC.',
+                    url: 'https://youtu.be/6aPvrdPUQas?si=zBekSQbBHorqXPIC',
+                    categories: ['dicas', 'tutoriais'],
+                    id: 'video11'
+                },
+                {
+                    title: 'Notícias: Lançamentos de Hardware 2025',
+                    description: 'Confira as novidades em CPUs, GPUs e SSDs anunciadas para 2025.',
+                    url: 'https://youtu.be/xCrlRloS9XM?si=BKBe16-KxPjGWTxy',
+                    categories: ['noticias'],
+                    id: 'video12'
+                }
+            ]
+        };
+
+        // Renderizar postagens do Instagram
+        const instagramPostsContainer = document.querySelector('.instagram-posts');
+        const renderInstagramPosts = (filter = 'all') => {
+            instagramPostsContainer.innerHTML = '';
+            const posts = backend.getInstagramPosts().filter(post => 
+                filter === 'all' || post.categories.includes(filter)
+            );
+            posts.forEach((post, index) => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('instagram-post');
+                postElement.setAttribute('tabindex', '0');
+                postElement.setAttribute('role', 'article');
+                postElement.setAttribute('aria-label', `Postagem do Instagram: ${post.caption}`);
+                postElement.style.transitionDelay = `${index * 0.1}s`;
+                postElement.innerHTML = `
+                    <p>${post.caption}</p>
+                    <a href="${post.url}" target="_blank" class="instagram-button ripple" aria-label="Ver postagem: ${post.caption}">
+                        <i class="fas fa-link"></i> Ver Postagem
+                    </a>
+                `;
+                instagramPostsContainer.appendChild(postElement);
+            });
+        };
+
+        // Renderizar vídeos do YouTube
+        const youtubeVideosContainer = document.querySelector('.youtube-videos');
+        const renderYouTubeVideos = (filter = 'all') => {
+            youtubeVideosContainer.innerHTML = '';
+            const videos = backend.getYouTubeVideos().filter(video => 
+                filter === 'all' || video.categories.includes(filter)
+            );
+            videos.forEach((video, index) => {
+                const videoElement = document.createElement('div');
+                videoElement.classList.add('youtube-video');
+                videoElement.setAttribute('tabindex', '0');
+                videoElement.setAttribute('role', 'article');
+                videoElement.setAttribute('aria-label', `Vídeo do YouTube: ${video.title}`);
+                videoElement.style.transitionDelay = `${index * 0.1}s`;
+                videoElement.innerHTML = `
+                    <h3>${video.title}</h3>
+                    <p>${video.description}</p>
+                    <a href="${video.url}" target="_blank" class="youtube-button ripple" aria-label="Assistir vídeo: ${video.title}">
+                        <i class="fab fa-youtube"></i> Assistir
+                    </a>
+                `;
+                youtubeVideosContainer.appendChild(videoElement);
+            });
+        };
+
+        // Partículas de fundo na Hero com conexões
+        const canvas = document.querySelector('.hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            // Criar partículas
+            particles = [];
+            for (let i = 0; i < 50; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2 + 1,
+                    speedX: (Math.random() - 0.5) * 0.8,
+                    speedY: (Math.random() - 0.5) * 0.8
+                });
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.lineWidth = 1;
+
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+
+                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Conectar partículas próximas
+                particles.forEach(p2 => {
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        animateParticles();
+
+        // Inicializar conteúdo
+        renderInstagramPosts();
+        renderYouTubeVideos();
+
+        // Efeito Ripple nos botões
+        document.querySelectorAll('.ripple').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+                ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+                button.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Acessibilidade: Foco nos cards, posts e vídeos com teclado
+        document.querySelectorAll('.hardware-card, .instagram-post, .youtube-video').forEach(element => {
+            element.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    element.focus();
+                }
+            });
+        });
+
+        // Filtros interativos (Instagram e YouTube)
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const container = button.closest('.instagram-filters') ? '.instagram-filters' : '.youtube-filters';
+                document.querySelectorAll(`${container} .filter-button`).forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
+                button.classList.add('active');
+                button.setAttribute('aria-selected', 'true');
+                if (container === '.instagram-filters') {
+                    renderInstagramPosts(button.dataset.filter);
+                } else {
+                    renderYouTubeVideos(button.dataset.filter);
+                }
+            });
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    button.click();
+                }
+            });
+        });
+
+        // Transições de página
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a, .cta-button');
+
+        function showSection(targetId) {
+            sections.forEach(section => {
+                section.classList.remove('section-visible');
+                section.classList.add('section-hidden');
+            });
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.remove('section-hidden');
+                targetSection.classList.add('section-visible');
+            }
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                showSection(targetId);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animação ao rolar a página
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.hardware-card, .instagram, .instagram-post, .youtube, .youtube-video');
+            elements.forEach((element, index) => {
+                const rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0) rotateY(0)';
+                    element.style.transitionDelay = `${index * 0.1}s`;
+                }
+            });
+        };
+
+        // Inicializar animações
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', () => {
+            animateOnScroll();
+            showSection('home'); // Mostrar seção inicial
+        });
+
+        // Aplicar estilos iniciais para animação
+        document.querySelectorAll('.hardware-card, .instagram, .instagram-post, .youtube, .youtube-video').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(50px) rotateY(-10deg)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+    </script>
+</body>
+</html>
